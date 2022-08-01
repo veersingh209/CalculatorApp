@@ -19,6 +19,7 @@ let rowOneTextColor: [Color] = [.black, .black, .black, .white]
 
 struct CalculatorHome: View {
     @EnvironmentObject var calculator: CalculatorLogic
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     var body: some View {
         GeometryReader { geometry in
@@ -27,7 +28,7 @@ struct CalculatorHome: View {
                 
                 Text(calculator.calculatorDisplayNumber)
                     .fontWeight(.thin)
-                    .foregroundColor(.white)
+                    .foregroundColor(colorScheme == .light ? .black : .white)
                     .font(.system(size: 80))
                     .lineLimit(1)
                     .padding(.leading, 20)
@@ -45,7 +46,7 @@ struct CalculatorHome: View {
                 .padding(.bottom)
             }
         }
-        .background(.black)
+        .background(Color("AdaptiveBackground"))
         .edgesIgnoringSafeArea(.all)
     }
 }
@@ -54,6 +55,7 @@ struct CalculatorHome_Previews: PreviewProvider {
     static var previews: some View {
         CalculatorHome()
             .environmentObject(CalculatorLogic())
+            .colorScheme(.light)
     }
 }
 

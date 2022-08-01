@@ -13,7 +13,6 @@ struct CalculatorButton: View {
     var label: String = ""
     var color: Color = .gray
     var textColor: Color = .white
-    var textSize = 40.0
     
     var body: some View {
         Button(action: {
@@ -24,7 +23,7 @@ struct CalculatorButton: View {
                     .fill(color)
                 
                 Text(label)
-                    .font(.system(size: textSize, weight: .thin))
+                    .font(.system(size: 40.0, weight: .thin))
                     .fontWeight(.medium)
                     .foregroundColor(textColor)
             }

@@ -23,6 +23,7 @@ class CalculatorLogic: ObservableObject {
     func buttonIsPressed(label: String) {
         switch label {
         case "AC":
+            calculatorDisplayNumber = "0"
             clearCalculator()
         case "=":
             equalsButtonPressed()
@@ -49,7 +50,6 @@ class CalculatorLogic: ObservableObject {
     }
     
     func clearCalculator() {
-        calculatorDisplayNumber = "0"
         currentOperator = nil
         previousSelectedNumber = nil
         currentNumberSelected = 0
@@ -57,8 +57,37 @@ class CalculatorLogic: ObservableObject {
         equalsPressed = false
     }
     
+    func checkDivideByZeroError() -> Bool {
+        if currentOperator!.usingDivison && (
+            currentNumberSelected == nil && previousSelectedNumber == 0) || (currentNumberSelected == 0) {
+            calculatorDisplayNumber = "Error"
+            clearCalculator()
+            return true
+        }
+        return false
+    }
+    
     func equalsButtonPressed() {
-        // equalsPressed = true
+        if currentOperator != nil {
+            numberOfDecimalPlaces = 0
+            
+            if checkDivideByZeroError() { return }
+            
+            if currentNumberSelected != nil || previousSelectedNumber != nil {
+                let total = currentOperator!.operation(previousSelectedNumber ?? currentNumberSelected!,
+                                                     currentNumberSelected ?? previousSelectedNumber!)
+                
+                if currentNumberSelected == nil {
+                    currentNumberSelected = previousSelectedNumber
+                }
+                
+                previousSelectedNumber = total
+                
+                equalsPressed = true
+                
+                updateDisplayNumber(number: total)
+            }
+        }
     }
     
     func decimalButtonPressed() {
@@ -83,7 +112,6 @@ class CalculatorLogic: ObservableObject {
             }
         }
         
-        // Update UI
         updateDisplayNumber(number: currentNumberSelected!)
     }
     
@@ -98,6 +126,7 @@ class CalculatorLogic: ObservableObject {
         
         // When using multiple operands
         if currentNumberSelected != nil && previousSelectedNumber != nil {
+            if checkDivideByZeroError() { return }
             let total = currentOperator!.operation(
                 previousSelectedNumber!, currentNumberSelected!
             )

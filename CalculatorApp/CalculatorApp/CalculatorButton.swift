@@ -10,7 +10,7 @@ import SwiftUI
 struct CalculatorButton: View {
     @EnvironmentObject var calcultor: CalculatorLogic
     
-    var label: String = " "
+    var label: String = ""
     var color: Color = .gray
     var textColor: Color = .white
     var textSize = 40.0

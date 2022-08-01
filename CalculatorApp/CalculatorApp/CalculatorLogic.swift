@@ -32,7 +32,7 @@ class CalculatorLogic: ObservableObject {
             if let value = Double(label) {
                 numberPressed(value: value)
             } else {
-                operationPressed(operation: Operation())
+                operationPressed(operation: Operator(label))
             }
         }
     }
@@ -87,7 +87,32 @@ class CalculatorLogic: ObservableObject {
         updateDisplayNumber(number: currentNumberSelected!)
     }
     
-    func operationPressed(operation: Operation) {
+    func operationPressed(operation: Operator) {
+        numberOfDecimalPlaces = 0
+        
+        // Clear if equal pressed
+        if equalsPressed {
+            currentNumberSelected = nil
+            equalsPressed = false
+        }
+        
+        // When using multiple operands
+        if currentNumberSelected != nil && previousSelectedNumber != nil {
+            let total = currentOperator!.operation(
+                previousSelectedNumber!, currentNumberSelected!
+            )
+            previousSelectedNumber = total
+            currentNumberSelected = nil
+            
+            // Update UI
+            updateDisplayNumber(number: total)
+            
+        } else if previousSelectedNumber == nil {
+            previousSelectedNumber = currentNumberSelected
+            currentNumberSelected = nil
+        }
+        
+        currentOperator = operation
         
     }
 }

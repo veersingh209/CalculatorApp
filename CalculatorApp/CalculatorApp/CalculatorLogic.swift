@@ -91,14 +91,23 @@ class CalculatorLogic: ObservableObject {
     }
     
     func decimalButtonPressed() {
+        if equalsPressed {
+            resetOnEmptyEqualPressed()
+        }
         
+        if currentNumberSelected == nil {
+            currentNumberSelected = 0
+        }
+        
+        numberOfDecimalPlaces = 1
+        
+        updateDisplayNumber(number: currentNumberSelected!)
+        calculatorDisplayNumber.append(".")
     }
     
     func numberPressed(value: Double) {
         if equalsPressed {
-            currentNumberSelected = nil
-            previousSelectedNumber = nil
-            equalsPressed = false
+            resetOnEmptyEqualPressed()
         }
         
         if currentNumberSelected == nil {
@@ -120,8 +129,7 @@ class CalculatorLogic: ObservableObject {
         
         // Clear if equal pressed
         if equalsPressed {
-            currentNumberSelected = nil
-            equalsPressed = false
+            resetOnEmptyEqualPressed()
         }
         
         // When using multiple operands
@@ -143,5 +151,11 @@ class CalculatorLogic: ObservableObject {
         
         currentOperator = operation
         
+    }
+    
+    func resetOnEmptyEqualPressed() {
+        currentNumberSelected = nil
+        previousSelectedNumber = nil
+        equalsPressed = false
     }
 }

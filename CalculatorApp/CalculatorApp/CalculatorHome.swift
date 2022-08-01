@@ -18,12 +18,14 @@ let rowOneButtonColors: [Color] = [.gray, .gray, .gray, .orange]
 let rowOneTextColor: [Color] = [.black, .black, .black, .white]
 
 struct CalculatorHome: View {
+    @EnvironmentObject var calculator: Calculator
+    
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .trailing, spacing: 0) {
                 Spacer()
                 
-                Text("0")
+                Text(calculator.calculatorDisplayNumber)
                     .fontWeight(.thin)
                     .foregroundColor(.white)
                     .font(.system(size: 80))
@@ -51,6 +53,7 @@ struct CalculatorHome: View {
 struct CalculatorHome_Previews: PreviewProvider {
     static var previews: some View {
         CalculatorHome()
+            .environmentObject(Calculator())
     }
 }
 

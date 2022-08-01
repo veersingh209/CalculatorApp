@@ -13,6 +13,7 @@
 		48AEA9DD28982B330051178F /* CalculatorHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AEA9DC28982B330051178F /* CalculatorHome.swift */; };
 		48AEA9DF28982B470051178F /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AEA9DE28982B470051178F /* CalculatorButton.swift */; };
 		48AEA9E128982B5B0051178F /* CalculatorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AEA9E028982B5B0051178F /* CalculatorRow.swift */; };
+		48AEA9E3289846600051178F /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AEA9E2289846600051178F /* Calculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		48AEA9DC28982B330051178F /* CalculatorHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorHome.swift; sourceTree = "<group>"; };
 		48AEA9DE28982B470051178F /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
 		48AEA9E028982B5B0051178F /* CalculatorRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorRow.swift; sourceTree = "<group>"; };
+		48AEA9E2289846600051178F /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +57,11 @@
 		483CAA372898269F00917A71 /* CalculatorApp */ = {
 			isa = PBXGroup;
 			children = (
+				48AEA9E2289846600051178F /* Calculator.swift */,
 				483CAA382898269F00917A71 /* CalculatorApp.swift */,
 				48AEA9DC28982B330051178F /* CalculatorHome.swift */,
-				48AEA9DE28982B470051178F /* CalculatorButton.swift */,
 				48AEA9E028982B5B0051178F /* CalculatorRow.swift */,
+				48AEA9DE28982B470051178F /* CalculatorButton.swift */,
 				483CAA3C289826A000917A71 /* Assets.xcassets */,
 				483CAA3E289826A000917A71 /* Preview Content */,
 			);
@@ -146,6 +149,7 @@
 				483CAA392898269F00917A71 /* CalculatorApp.swift in Sources */,
 				48AEA9DD28982B330051178F /* CalculatorHome.swift in Sources */,
 				48AEA9DF28982B470051178F /* CalculatorButton.swift in Sources */,
+				48AEA9E3289846600051178F /* Calculator.swift in Sources */,
 				48AEA9E128982B5B0051178F /* CalculatorRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CalculatorButton: View {
+    @EnvironmentObject var calcultor: Calculator
+    
     var label: String = " "
     var color: Color = .gray
     var textColor: Color = .white
@@ -15,7 +17,7 @@ struct CalculatorButton: View {
     
     var body: some View {
         Button(action: {
-            // Need to implement
+            calcultor.buttonIsPressed(label: label)
         }, label: {
             ZStack {
                 Circle()
@@ -37,6 +39,7 @@ struct CalculatorButton_Previews: PreviewProvider {
                 width: 100,
                 height: 100
             ))
+            .environmentObject(Calculator())
     }
 }
 

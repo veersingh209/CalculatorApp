@@ -30,7 +30,12 @@ class Calculator: ObservableObject {
     }
     
     func clearCalculator() {
-        
+        calculatorDisplayNumber = "0"
+        currentOperator = nil
+        previousSelectedNumber = nil
+        currentNumberSelected = 0
+        numberOfDecimalPlaces = 0
+        equalsPressed = false
     }
     
     func equalsButtonPressed() {

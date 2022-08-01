@@ -18,7 +18,7 @@ let rowOneButtonColors: [Color] = [.gray, .gray, .gray, .orange]
 let rowOneTextColor: [Color] = [.black, .black, .black, .white]
 
 struct CalculatorHome: View {
-    @EnvironmentObject var calculator: Calculator
+    @EnvironmentObject var calculator: CalculatorLogic
     
     var body: some View {
         GeometryReader { geometry in
@@ -53,7 +53,7 @@ struct CalculatorHome: View {
 struct CalculatorHome_Previews: PreviewProvider {
     static var previews: some View {
         CalculatorHome()
-            .environmentObject(Calculator())
+            .environmentObject(CalculatorLogic())
     }
 }
 
